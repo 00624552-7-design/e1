@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen de Estudios Sociales - Derechos Humanos</title>
+    <style>
+        /* Estilos básicos y medidas anti-copia */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            user-select: none; /* Evita la selección de texto */
+            -webkit-user-select: none;
+        }
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .timer {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #e74c3c;
+            background: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .question {
+            margin-bottom: 25px;
+        }
+        .question p {
+            font-weight: bold;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        .btn-submit {
+            background-color: #27ae60;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .btn-submit:hover {
+            background-color: #219653;
+        }
+        /* Overlay de bloqueo para infractores */
+        #block-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            color: white;
+            z-index: 9999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;" oncopy="return false;" oncut="return false;" onpaste="return false;">
+
+    <div class="header">
+        <h1>Evaluación: Derechos Humanos</h1>
+        <div class="timer" id="time-display">45:00</div>
+    </div>
+
+    <!-- Formulario de Identificación -->
+    <div class="section">
+        <h3>Datos del Estudiante</h3>
+        <div class="form-group">
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" required>
+        </div>
+        <div class="form-group">
+            <label for="nombres">Nombres:</label>
+            <input type="text" id="nombres" required>
+        </div>
+        <div class="form-group">
+            <label for="codigo">Código Estudiantil / NIE:</label>
+            <input type="text" id="codigo" required>
+        </div>
+        <div class="form-group">
+            <label for="lista">Número de Lista:</label>
+            <input type="number" id="lista" required>
+        </div>
+    </div>
+
+    <!-- Preguntas -->
+    <form id="exam-form" class="section">
+        <h3>Cuestionario</h3>
+
+        <div class="question">
+            <p>1. ¿En qué año fue adoptada la Declaración Universal de los Derechos Humanos por la ONU?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="a"> a) 1945</label>
+                <label><input type="radio" name="q1" value="b"> b) 1948</label>
+                <label><input type="radio" name="q1" value="c"> c) 1989</label>
+                <label><input type="radio" name="q1" value="d"> d) 1950</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>2. ¿A qué generación pertenecen los derechos civiles y políticos (ej. derecho a la vida, al voto)?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="a"> a) Primera Generación</label>
+                <label><input type="radio" name="q2" value="b"> b) Segunda Generación</label>
+                <label><input type="radio" name="q2" value="c"> c) Tercera Generación</label>
+                <label><input type="radio" name="q2" value="d"> d) Cuarta Generación</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>3. ¿Qué característica de los Derechos Humanos establece que no pueden ser cedidos ni renunciados?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="a"> a) Universalidad</label>
+                <label><input type="radio" name="q3" value="b"> b) Indivisibilidad</label>
+                <label><input type="radio" name="q3" value="c"> c) Inalienabilidad</label>
+                <label><input type="radio" name="q3" value="d"> d) Imprescriptibilidad</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>4. El derecho a la educación, la salud y el trabajo se clasifican como derechos de:</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="a"> a) Primera Generación</label>
+                <label><input type="radio" name="q4" value="b"> b) Segunda Generación (Económicos, Sociales y Culturales)</label>
+                <label><input type="radio" name="q4" value="c"> c) Tercera Generación</label>
+                <label><input type="radio" name="q4" value="d"> d) Solidaridad Internacional</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>5. ¿Cuál es el organismo principal de las Naciones Unidas encargado de promover y proteger los derechos humanos en el mundo?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="a"> a) El Fondo Monetario Internacional (FMI)</label>
+                <label><input type="radio" name="q5" value="b"> b) El Consejo de Derechos Humanos</label>
+                <label><input type="radio" name="q5" value="c"> c) La Organización Mundial del Comercio (OMC)</label>
+                <label><input type="radio" name="q5" value="d"> d) El Banco Mundial</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>6. ¿Qué documento histórico de 1215 es considerado uno de los primeros antecedentes de los derechos humanos?</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="a"> a) La Declaración de los Derechos del Hombre y del Ciudadano</label>
+                <label><input type="radio" name="q6" value="b"> b) La Carta Magna</label>
+                <label><input type="radio" name="q6" value="c"> c) La Constitución de los Estados Unidos</label>
+                <label><input type="radio" name="q6" value="d"> d) El Código de Hammurabi</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>7. La característica de "Universalidad" de los Derechos Humanos significa que:</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="a"> a) Solo aplican para los ciudadanos de un país específico</label>
+                <label><input type="radio" name="q7" value="b"> b) Pertenecen a todos los seres humanos sin distinción alguna</label>
+                <label><input type="radio" name="q7" value="c"> c) Solo protegen a las minorías</label>
+                <label><input type="radio" name="q7" value="d"> d) Se aplican únicamente en tiempos de paz</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>8. Los derechos relacionados con el medio ambiente sano y la paz pertenecen a la:</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="a"> a) Primera Generación</label>
+                <label><input type="radio" name="q8" value="b"> b) Segunda Generación</label>
+                <label><input type="radio" name="q8" value="c"> c) Tercera Generación (Derechos de los Pueblos o de Solidaridad)</label>
+                <label><input type="radio" name="q8" value="d"> d) Declaración Original</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>9. ¿Quién fue uno de los principales promotores y redactores de la Declaración Universal de los Derechos Humanos?</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="a"> a) Eleanor Roosevelt</label>
+                <label><input type="radio" name="q9" value="b"> b) Winston Churchill</label>
+                <label><input type="radio" name="q9" value="c"> c) Nelson Mandela</label>
+                <label><input type="radio" name="q9" value="d"> d) Martin Luther King Jr.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>10. ¿Qué significa la "Indivisibilidad" de los derechos humanos?</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="a"> a) Que pueden dividirse según la clase social</label>
+                <label><input type="radio" name="q10" value="b"> b) Que unos derechos son más importantes que otros</label>
+                <label><input type="radio" name="q10" value="c"> c) Que no pueden separarse, la privación de uno afecta a los demás</label>
+                <label><input type="radio" name="q10" value="d"> d) Que están divididos por continentes</label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar Examen</button>
+    </form>
+
+    <!-- Overlay de penalización -->
+    <div id="block-overlay">
+        <h2>⚠️ EXAMEN BLOQUEADO ⚠️</h2>
+        <p>Se ha detectado una infracción a las reglas del examen.</p>
+        <p>Motivo: Salir de la pestaña, minimizar la ventana o intento de uso de herramientas externas.</p>
+        <p>Por favor, contacta a tu profesor.</p>
+    </div>
+
+    <script>
+        // --- 1. Lógica del Temporizador (45 minutos) ---
+        let totalTime = 45 * 60; // 45 minutos en segundos
+        const timerDisplay = document.getElementById('time-display');
+
+        const countdown = setInterval(() => {
+            if (totalTime <= 0) {
+                clearInterval(countdown);
+                alert("¡El tiempo ha terminado! El examen se enviará automáticamente.");
+                document.getElementById('exam-form').submit(); // Envío automático
+            } else {
+                totalTime--;
+                let minutes = Math.floor(totalTime / 60);
+                let seconds = totalTime % 60;
+                timerDisplay.textContent = 
+                    (minutes < 10 ? "0" + minutes : minutes) + ":" + 
+                    (seconds < 10 ? "0" + seconds : seconds);
+            }
+        }, 1000);
+
+        // --- 2. Lógica Anti-Trampas (Proctoring Web Básico) ---
+        let infractions = 0;
+        const maxInfractions = 1; // Número de advertencias antes del bloqueo
+
+        function handleInfraction() {
+            infractions++;
+            if (infractions > maxInfractions) {
+                document.getElementById('block-overlay').style.display = 'flex';
+                clearInterval(countdown);
+                // Aquí podrías agregar un fetch/AJAX para notificar al servidor sobre la trampa
+            } else {
+                alert("ADVERTENCIA: No está permitido salir de la pestaña, minimizar el navegador ni usar aplicaciones externas. Un intento más y el examen será anulado.");
+            }
+        }
+
+        // Detectar si cambian de pestaña (visibilitychange)
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                handleInfraction();
+            }
+        });
+
+        // Detectar si minimizan o pierden el foco de la ventana (blur)
+        window.addEventListener("blur", () => {
+            handleInfraction();
+        });
+
+        // Prevenir uso de teclado para abrir DevTools o imprimir
+        document.addEventListener('keydown', (e) => {
+            // Bloquea F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+P, Ctrl+C
+            if (e.key === 'F12' || 
+               (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || 
+               (e.ctrlKey && (e.key === 'U' || e.key === 'P' || e.key === 'C' || e.key === 'V'))) {
+                e.preventDefault();
+            }
+        });
+
+        // --- 3. Envío del formulario ---
+        document.getElementById('exam-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Validación de campos vacíos
+            const apellidos = document.getElementById('apellidos').value;
+            const nombres = document.getElementById('nombres').value;
+            const codigo = document.getElementById('codigo').value;
+            const lista = document.getElementById('lista').value;
+
+            if(!apellidos || !nombres || !codigo || !lista) {
+                alert("Por favor, completa todos los datos de estudiante antes de enviar.");
+                return;
+            }
+
+            alert(`Examen finalizado con éxito. \nEstudiante: ${nombres} ${apellidos}\nCódigo: ${codigo}`);
+            // Aquí se conectaría con un backend (PHP, Node, Firebase) para procesar las respuestas
+            this.reset();
+        });
+    </script>
+</body>
+</html>
